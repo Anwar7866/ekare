@@ -61,66 +61,13 @@ export async function buyCourse(
       throw new Error(orderResponse.data.message);
     }
 
-    const RAZORPAY_KEY = import.meta.env.VITE_APP_RAZORPAY_KEY;
-    // console.log("RAZORPAY_KEY...", RAZORPAY_KEY);
-
-    // options
-    const options = {
-      key: RAZORPAY_KEY,
-      currency: orderResponse.data.message.currency,
-      amount: orderResponse.data.message.amount,
-      order_id: orderResponse.data.message.id,
-      name: "E-Kare",
-      description: "Thank You for Purchasing the Course",
-      image: rzpLogo,
-      prefill: {
-        name: userDetails.firstName,
-        email: userDetails.email,
-      },
-      handler: function (response) {
-        //send successful mail
-        sendPaymentSuccessEmail(
-          response,
-          orderResponse.data.message.amount,
-          token
-        );
-        //verifyPayment
-        verifyPayment({ ...response, coursesId }, token, navigate, dispatch);
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-    paymentObject.on("payment.failed", function (response) {
-      toast.error("oops, payment failed");
-      console.log("payment failed.... ", response.error);
-    });
+    verifyPayment({ coursesId }, token, navigate, dispatch);
   } catch (error) {
     console.log("PAYMENT API ERROR.....", error);
     toast.error(error.response?.data?.message);
     // toast.error("Could not make Payment");
   }
   toast.dismiss(toastId);
-}
-
-// ================ send Payment Success Email ================
-async function sendPaymentSuccessEmail(response, amount, token) {
-  try {
-    await apiConnector(
-      "POST",
-      SEND_PAYMENT_SUCCESS_EMAIL_API,
-      {
-        orderId: response.razorpay_order_id,
-        paymentId: response.razorpay_payment_id,
-        amount,
-      },
-      {
-        Authorization: `Bearer ${token}`,
-      }
-    );
-  } catch (error) {
-    console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
-  }
 }
 
 // ================ verify payment ================

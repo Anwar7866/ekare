@@ -3,5 +3,9 @@ export const formattedDate = (date) => {
     month: "long",
     day: "numeric",
     year: "numeric",
-  })
-}
+  });
+};
+export const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "short", day: "numeric" };
+  return new Date(dateString).toLocaleDateString("en-IN", options);
+};

@@ -11,13 +11,17 @@
     "server": "cd server && npm run dev"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
     "@ramonak/react-progress-bar": "^5.0.3",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "concurrently": "^8.2.1",
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^10.16.4",
+    "lucide-react": "^0.479.0",
     "razorpay": "^2.9.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -35,6 +39,8 @@
     "react-super-responsive-table": "^5.2.2",
     "react-type-animation": "^3.1.0",
     "swiper": "^11.0.4",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7",
     "video-react": "^0.16.0"
   },
   "devDependencies": {

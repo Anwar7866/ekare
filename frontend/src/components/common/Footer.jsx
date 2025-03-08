@@ -252,7 +252,7 @@ const Footer = () => {
 
           <div className="flex items-center">
             <a
-              href="https://www.linkedin.com/in/aniruddha-gade-a48800231/"
+              href="https://www.linkedin.com/"
               className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300"
               target="_blank"
               rel="noopener noreferrer"
@@ -260,7 +260,7 @@ const Footer = () => {
               <ImLinkedin2 size={17} />
             </a>
             <a
-              href="https://www.github.com/Aniruddha-Gade"
+              href="https://github.com/Anwar7866/ekare?tab=readme-ov-file"
               className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300"
               target="_blank"
               rel="noopener noreferrer"
